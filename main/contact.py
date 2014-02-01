@@ -31,7 +31,7 @@ def contact_create():
     flask.flash('New contact was successfully created!', category='success')
     return flask.redirect(flask.url_for('contact_list', order='-created'))
   return flask.render_template(
-      'contact_create.html',
+      'contact_update.html',
       html_class='contact-create',
       title='Create Contact',
       form=form,

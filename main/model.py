@@ -31,7 +31,10 @@ class Config(Base, modelx.ConfigX):
   announcement_type = ndb.StringProperty(default='info', choices=[
       'info', 'warning', 'success', 'danger',
     ])
-  brand_name = ndb.StringProperty(default='Phone Book')
+
+  # If you this app please remove this line and keep the next one.
+  brand_name = 'Phonebook'
+  # brand_name = ndb.StringProperty(default='Phonebook')
   facebook_app_id = ndb.StringProperty(default='')
   facebook_app_secret = ndb.StringProperty(default='')
   feedback_email = ndb.StringProperty(default='')
