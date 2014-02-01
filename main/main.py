@@ -20,7 +20,7 @@ app.jinja_env.globals.update(update_query_argument=util.update_query_argument)
 import admin
 import auth
 import user
-
+import contact
 
 if config.DEVELOPMENT:
   from werkzeug import debug

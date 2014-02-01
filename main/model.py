@@ -31,7 +31,7 @@ class Config(Base, modelx.ConfigX):
   announcement_type = ndb.StringProperty(default='info', choices=[
       'info', 'warning', 'success', 'danger',
     ])
-  brand_name = ndb.StringProperty(default='gae-init')
+  brand_name = ndb.StringProperty(default='Phone Book')
   facebook_app_id = ndb.StringProperty(default='')
   facebook_app_secret = ndb.StringProperty(default='')
   feedback_email = ndb.StringProperty(default='')
@@ -71,3 +71,11 @@ class User(Base, modelx.UserX):
       'name',
       'username',
     })
+
+
+class Contact(Base):
+  user_key = ndb.KeyProperty(kind=User, required=True)
+  name = ndb.StringProperty(required=True)
+  email = ndb.StringProperty(default='')
+  phone = ndb.StringProperty(default='')
+  address = ndb.StringProperty(default='')
