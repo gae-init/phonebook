@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import os
 import sys
 
@@ -10,3 +12,4 @@ else:
   re_ = re.compile(re_)
   stubs.FakeFile._skip_files = re_
   sys.path.insert(0, 'lib')
+sys.path.insert(0, 'libx')

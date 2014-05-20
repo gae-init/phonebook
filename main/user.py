@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
 import copy
 
@@ -25,7 +25,6 @@ def user_list():
       limit=util.param('limit', int),
       cursor=util.param('cursor'),
       order=util.param('order') or '-created',
-      name=util.param('name'),
       admin=util.param('admin', bool),
       active=util.param('active', bool),
       permissions=util.param('permissions', list),
@@ -96,7 +95,7 @@ def user_update(user_id):
     if not util.is_valid_username(form.username.data):
       form.username.errors.append('This username is invalid.')
     elif not is_username_available(form.username.data, user_db):
-      form.username.errors.append('This username is taken.')
+      form.username.errors.append('This username is already taken.')
     else:
       form.populate_obj(user_db)
       if auth.current_user_id() == user_db.key.id():
@@ -146,10 +145,10 @@ class UserMergeForm(wtf.Form):
   user_key = wtf.StringField('User Key', [wtf.validators.required()])
   user_keys = wtf.StringField('User Keys', [wtf.validators.required()])
   username = wtf.StringField('Username', [wtf.validators.optional()])
-  name = wtf.StringField('Merged Name',
+  name = wtf.StringField('Name (merged)',
       [wtf.validators.required()], filters=[util.strip_filter],
     )
-  email = wtf.StringField('Merged Email',
+  email = wtf.StringField('Email (merged)',
       [wtf.validators.optional(), wtf.validators.email()],
       filters=[util.email_filter],
     )
