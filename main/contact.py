@@ -1,3 +1,5 @@
+# coding: utf-8
+
 from flask.ext import wtf
 import flask
 
@@ -41,7 +43,9 @@ def contact_create():
 @app.route('/contact/')
 @auth.login_required
 def contact_list():
-  contact_dbs, contact_cursor = model.Contact.get_dbs()
+  contact_dbs, contact_cursor = model.Contact.get_dbs(
+      user_key=auth.current_user_key(),
+    )
 
   return flask.render_template(
       'contact_list.html',
