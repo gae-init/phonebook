@@ -23,7 +23,6 @@ app.jinja_env.globals.update(
 import user
 import admin
 import auth
-import contact
 import model
 import profile
 import task

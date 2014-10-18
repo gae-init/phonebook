@@ -1,0 +1,37 @@
+# extends 'base.html'
+
+# block content
+  <div class="page-header">
+    <h1>{{title}}</h1>
+  </div>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Address</th>
+      </tr>
+    </thead>
+    <tbody>
+      # for contact_db in contact_dbs
+        <tr>
+          <td>
+            <a href="{{url_for('contact_update', contact_id=contact_db.key.id())}}">
+              {{contact_db.key.id()}}
+            </a>
+          </td>
+          <td>
+            <a href="{{url_for('contact_view', contact_id=contact_db.key.id())}}">
+              {{contact_db.name}}
+            </a>
+          </td>
+          <td>{{contact_db.email}}</td>
+          <td>{{contact_db.phone}}</td>
+          <td>{{contact_db.address}}</td>
+        </tr>
+      # endfor
+    </tbody>
+  </table>
+# endblock
